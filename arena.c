@@ -65,4 +65,7 @@ void *arena_alloc(Arena *arena, size_t size, size_t align) {
 
 void arena_free_all(Arena *arena) { memset(arena->buffer, 0, arena->buf_len); }
 
-int main() { Arena *arena = arena_init(); }
+int main() {
+  Arena *arena = arena_init();
+  return 0;
+}
