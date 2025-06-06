@@ -26,7 +26,7 @@ struct Arena {
 };
 
 uintptr_t align_forward(uintptr_t ptr, uintptr_t alignment) {
-  assert(is_power_of_two(ptr));
+  assert(is_power_of_two(alignment));
 
   uintptr_t mod = ptr & (alignment - 1);
 
