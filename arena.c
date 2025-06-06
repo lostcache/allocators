@@ -11,7 +11,11 @@
 #define DEFAULT_ARENA_SIZE 16 * 100
 #endif
 
-bool is_power_of_two(uintptr_t ptr) { return (ptr & (ptr - 1)) == 0; }
+bool is_power_of_two(uintptr_t ptr) {
+  assert(ptr > 0);
+
+  return (ptr & (ptr - 1)) == 0;
+}
 
 typedef struct Arena Arena;
 
