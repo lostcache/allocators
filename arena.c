@@ -40,14 +40,14 @@ uintptr_t align_forward(uintptr_t ptr, uintptr_t alignment) {
 void *arena_alloc_align(Arena *arena, size_t size, size_t align) {
   uintptr_t end_ptr = (uintptr_t)arena->buffer + (uintptr_t)arena->curr_offset;
   end_ptr = align_forward(end_ptr, align);
-  uintptr_t filled_space = end_ptr - (uintptr_t)arena->buffer;
+  uintptr_t occupied = end_ptr - (uintptr_t)arena->buffer;
 
-  if (filled_space > arena->buf_len - size) {
+  if (occupied > arena->buf_len - size) {
     return NULL;
   }
 
-  arena->curr_offset = filled_space + size;
-  void *ptr = (void *)&arena->buffer[filled_space];
+  arena->curr_offset = occupied + size;
+  void *ptr = (void *)&arena->buffer[occupied];
   memset(ptr, 0, size);
   return ptr;
 }
