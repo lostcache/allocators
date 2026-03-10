@@ -1,30 +1,11 @@
-#include <assert.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "utils.c"
 
 #define main arena_main
 #include "arena.c"
 #undef main
 
-#define GREEN "\033[0;32m"
-#define RED "\033[0;31m"
-#define RESET "\033[0m"
-
 static int tests_passed = 0;
 static int tests_failed = 0;
-
-#define TEST_ASSERT(condition, message)                                        \
-  do {                                                                         \
-    if (condition) {                                                           \
-      printf(GREEN "✓ " RESET "%s\n", message);                                \
-      tests_passed++;                                                          \
-    } else {                                                                   \
-      printf(RED "✗ " RESET "%s\n", message);                                  \
-      tests_failed++;                                                          \
-    }                                                                          \
-  } while (0)
 
 void test_is_power_of_two() {
   printf("\n=== Testing is_power_of_two ===\n");
